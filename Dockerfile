@@ -21,7 +21,7 @@ ENV MYSQL_HOST 10.0.224.10
 ENV MYSQL_USER_NAME xiaoliu
 ENV MYSQL_PASSWORD Lz12253613
 ENV DATABASE_NAME lz_music
-#ENV APPLICATION_PORT 8080
+ENV APPLICATION_PORT 8080
 
 # 安装依赖包，如需其他依赖包，请到alpine依赖包管理(https://pkgs.alpinelinux.org/packages?name=php8*imagick*&branch=v3.13)查找。
 RUN apk add --update --no-cache openjdk8-jre-base \
@@ -34,7 +34,7 @@ WORKDIR /app
 COPY --from=build /app/target/lz-music-0.0.1.jar .
 
 # 暴露端口
-EXPOSE 80
+EXPOSE 8080
 
 # 执行启动命令
 CMD ["java", "-jar", "/app/lz-music-0.0.1.jar", "--spring.profiles.active=test"]
